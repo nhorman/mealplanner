@@ -17,5 +17,16 @@ services:
     volumes:
       - ./www/html:/usr/share/nginx/html/
 
+  mysql:
+    image: mysql:5.7
+    container_name: mysql-container
+    volumes:
+      - ./sql:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: secret
+      MYSQL_DATABASE: mpdb
+      MYSQL_USER: myuser
+      MYSQL_PASSWORD: password
+
 networks:
   webnet: {}
