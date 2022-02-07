@@ -5,27 +5,30 @@ services:
     ports:
      - 8080:80
     links:
-      -php
+      - php
     volumes:
       - ./www/html:/usr/share/nginx/html/
 
   php:
-    image: php:7.0-fpm
+    build: ./php/
     container_name: php_container
+    links:
+      - mysql
     expose:
       - 9000
     volumes:
       - ./www/html:/usr/share/nginx/html/
 
   mysql:
-    image: mysql:5.7
-    container_name: mysql-container
+    image: mysql:8.0
+    container_name: mysql_container
+    command: --default-authentication-plugin=mysql_native_password
     volumes:
-      - ./sql:/var/lib/mysql
+      - /var/lib/mysql
     environment:
       MYSQL_ROOT_PASSWORD: secret
-      MYSQL_DATABASE: mpdb
-      MYSQL_USER: myuser
+      MYSQL_DATABASE: mydb  
+      MYSQL_USER: myuser  
       MYSQL_PASSWORD: password
 
 networks:
