@@ -30,6 +30,7 @@
 				echo "<p>create table sources failed: {$result} </p>";
 				return FALSE;
 			}
+			$result = $pdo->query("INSERT into sources (name) VALUES ('NOTHING')");
 		}
 		$meals_exists = tableExists($pdo, "meals");
 		if ($meals_exists == FALSE) {
@@ -39,6 +40,7 @@
 				echo "<p>create table meals failed: {$result} </p>";
 				return FALSE;
 			}
+			$result = $pdo->query("INSERT into meals (name, source, location) VALUES ('NOTHING', 'NOTHING', 'NOTHING')");
 		}
 		$ingred_exists = tableExists($pdo, "ingreedients");
 		if ($ingred_exists == FALSE) {
