@@ -24,6 +24,9 @@
 		<p></p>
 		<label for="location">Location:</label>
 		<input type="text" id="location" name="location"/>
+		<p></p>
+		<label for="ingreedients">Ingreedients:</label>
+		<textarea id="ingreedients" name"ingreedients" rows="20" cols="50"></textarea>
 		</div>
 		<button type="submit">Submit</button>
 	</form>
