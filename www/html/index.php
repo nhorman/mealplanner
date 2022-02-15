@@ -24,6 +24,7 @@
 	function createTables($pdo) {
 		$sources_exists = tableExists($pdo, "sources");
 		if ($sources_exists == FALSE) {
+			echo "<p>Creating sources table\n</p>";
 			$result = $pdo->query("CREATE TABLE sources (name VARCHAR(100) NOT NULL, PRIMARY KEY(name))");
 			if ($result == FALSE) {
 				echo "<p>create table sources failed: {$result} </p>";
@@ -32,6 +33,7 @@
 		}
 		$meals_exists = tableExists($pdo, "meals");
 		if ($meals_exists == FALSE) {
+			echo "<p>Creating meals table\n</p>";
 			$result = $pdo->query("CREATE TABLE meals (name VARCHAR(100) NOT NULL, source VARCHAR(100) NOT NULL, FOREIGN KEY (source) REFERENCES sources(name), location VARCHAR(512), PRIMARY KEY (name))");
 			if ($result == FALSE) {
 				echo "<p>create table meals failed: {$result} </p>";
@@ -40,6 +42,7 @@
 		}
 		$ingred_exists = tableExists($pdo, "ingreedients");
 		if ($ingred_exists == FALSE) {
+			echo "<p>Creating ingreedients table\n</p>";
 			$result = $pdo->query("CREATE TABLE ingreedients (id MEDIUMINT AUTO_INCREMENT NOT NULL, name VARCHAR(100) NOT NULL, meal VARCHAR(100) NOT NULL, FOREIGN KEY (meal) REFERENCES meals(name), PRIMARY KEY(id))");
 			if ($result == FALSE) {
 				echo "<p> create table ingreedients failed: {$result}</p>";
