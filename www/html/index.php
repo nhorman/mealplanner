@@ -2,8 +2,7 @@
 <html>
 <body>
 
-<h1>Hello World!</h1>  
-      <p><?php echo 'We are running PHP, version: ' . phpversion(); ?></p>  
+<h1>Meal Planner</h1>  
       <?  
 
 
@@ -50,30 +49,19 @@
 		return TRUE;
 	}
 
-	$database ="mpdb";  
-	$user = "root";  
-	$password = "secret";  
-	$host = "mysql";  
+	include 'vars.php';
 
 	$connection = new PDO("mysql:host={$host};dbname={$database};charset=utf8", $user, $password);  
-	$query = $connection->query("SELECT TABLE_NAME FROM information_schema.TABLES WHERE TABLE_TYPE='BASE TABLE'");  
 	$result = createTables($connection);
 	if ($result == FALSE) {
 		return;
 	}
 
-       $tables = $query->fetchAll(PDO::FETCH_COLUMN);  
-
-        if (empty($tables)) {
-          echo "<p>There are no tables in database \"{$database}\".</p>";
-        } else {
-          echo "<p>Database \"{$database}\" has the following tables:</p>";
-          echo "<ul>";
-            foreach ($tables as $table) {
-              echo "<li>{$table}</li>";
-            }
-          echo "</ul>";
-        }
+	
 ?>
+	<p>Select your option</p>
+	<a href="createmeal.php">Create a Meal</a>
+	<p></p>
+	<a href="planmeals.php">Plan a week of meals</a>
 </body>
 </html>
