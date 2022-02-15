@@ -77,6 +77,8 @@
 	<a href="createmeal.php">Create a Meal</a>
 	<p></p>
 	<a href="planmeals.php">Plan a week of meals</a>
-	
+	<p></p>
+	<a href="printplan.php">Print your meal plan</a>
+	<p></p>
 </body>
 </html>
