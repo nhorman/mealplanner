@@ -51,6 +51,15 @@
 				return FALSE;
 			}
 		}
+		$plan_exists = tableExists($pdo, "plans");
+		if ($plan_exists == FALSE) {
+			echo "<p>Creating plan table\n</p>";
+			$result = $pdo->query("CREATE TABLE plans (name VARCHAR(100) NOT NULL, sunday VARCHAR(100), monday VARCHAR(100), tuesday VARCHAR(100), wednesday VARCHAR(100), thursday VARCHAR(100), friday VARCHAR(100), saturday VARCHAR(100), PRIMARY KEY(name), FOREIGN KEY (sunday) REFERENCES meals(name), FOREIGN KEY (monday) REFERENCES meals(name), FOREIGN KEY (tuesday) REFERENCES meals(name), FOREIGN KEY (wednesday) REFERENCES meals(name), FOREIGN KEY (thursday) REFERENCES meals(name), FOREIGN KEY (friday) REFERENCES meals(name), FOREIGN KEY (saturday) REFERENCES meals(name))");
+			if ($result == FALSE) {
+				echo "<p> Create table plans failed\n</p>";
+				return FALSE;
+			}
+		}
 		return TRUE;
 	}
 
@@ -68,5 +77,6 @@
 	<a href="createmeal.php">Create a Meal</a>
 	<p></p>
 	<a href="planmeals.php">Plan a week of meals</a>
+	
 </body>
 </html>
