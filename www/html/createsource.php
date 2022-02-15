@@ -9,7 +9,7 @@
 	 		<input type="text" id="name" name="name" />
 			<?
 			$referrer = $_SERVER["HTTP_REFERER"];
-			$text = "<input type=\"hidden\" id=\"ref\" value={$referrer}/>";
+			$text = "<input type=\"hidden\" id=\"ref\" name=\"ref\" value=\"{$referrer}\"/>";
 	 		echo $text;
 			?>
 	 		<button type="submit">Submit</button>
