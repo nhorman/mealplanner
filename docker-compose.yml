@@ -27,7 +27,7 @@ services:
       - /var/lib/mysql
     environment:
       MYSQL_ROOT_PASSWORD: secret
-      MYSQL_DATABASE: mydb  
+      MYSQL_DATABASE: mpdb  
       MYSQL_USER: myuser  
       MYSQL_PASSWORD: password
 
