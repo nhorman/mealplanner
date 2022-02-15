@@ -12,8 +12,14 @@
 	$result = $connection->query("INSERT into meals (name, source, location) VALUES ('{$name}', '{$source}', '{$location}')");
 	if ($result == FALSE) {
 		echo "<p>Unable to insert new meal\n</p>";
+	} else {
+		foreach ($inglist as &$value) {
+			$result = $connection->query("INSERT into ingreedients (name, meal) VALUES ('{$value}', '{$name}')");
+			if ($result == FALSE) {
+				echo "<p>Unable to insert new ingreedient\n</p>";
+			}
+		}
 	}
-
 	$burl = $_SERVER["HTTP_REFERER"];
 	echo "<a href=$burl>Go Back to Meal Creation</a>";
 ?>
