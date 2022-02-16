@@ -80,5 +80,6 @@
 	<p></p>
 	<a href="printplan.php">Print your meal plan</a>
 	<p></p>
+	<a href="mealstats.php">See meal statistics</a>
 </body>
 </html>
