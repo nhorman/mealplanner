@@ -17,6 +17,20 @@
 	if ($result == FALSE) {
 		echo "<p> Unable to save meal plan\n</p>";
 	}
+
+
+	$days = array('sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday');
+	$stmt = $connection->prepare("SELECT * from plans where name='${name}'");
+	$stmt->execute();
+	while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+		foreach($days as &$day) {
+			print_r($row);
+			$meal = $row["{$day}"];
+			echo "<p>updating times made for {$day} / {$meal}</p>";
+			$connection->query("UPDATE meals SET timesmade=timesmade+1 where name='${meal}'");
+		}
+	}
+	
 ?>
 	<p></p>
 	<a href="/index.php">Main Page<a/>
