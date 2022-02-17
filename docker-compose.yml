@@ -1,7 +1,7 @@
 services:
   nginx:
     build: ./nginx/
-    container_name: nginx-container
+    container_name: nginx_container
     ports:
      - 8080:80
     links:
@@ -30,6 +30,16 @@ services:
       MYSQL_DATABASE: mpdb  
       MYSQL_USER: myuser  
       MYSQL_PASSWORD: password
+
+  phpadmin:
+    image: phpmyadmin:latest
+    container_name: admin_container
+    links:
+      - mysql
+    ports:
+      - 8081:80
+    environment:
+      - PMA_ARBITRARY=1
 
 networks:
   webnet: {}
