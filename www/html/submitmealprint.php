@@ -49,6 +49,8 @@
 			echo "<li> $ing </li>";
 		}
 		echo "</ul>";
+		$planenc = rawurlencode($plan);
+		echo "<a href=printcsv.php?plan={$planenc}>Print csv</a>";
 	}
 ?>
 	<p></p>
