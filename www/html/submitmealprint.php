@@ -23,7 +23,12 @@
 			$mealdata->execute([1]);
 			$mealdata = $mealdata->fetch();
 			$source = $mealdata["source"];
-			$location = $mealdata["location"];
+			if ($source == "Internet") {
+				$mealurl = rawurlencode($mealdata["location"]);
+				$location = "<img src='https://chart.googleapis.com/chart?chs=150x150&cht=qr&chl={$mealurl}&choe=UTF-8' title='{$mealurl}' />";
+			} else {
+				$location = $mealdata["location"];
+			}
 			echo "<tr>";
 			echo "<td>{$day}</td><td>{$meal}</td><td>{$source}</td><td>{$location}</td>";
 			echo "</tr>";
