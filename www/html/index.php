@@ -81,5 +81,7 @@
 	<a href="printplan.php">Print your meal plan</a>
 	<p></p>
 	<a href="mealstats.php">See meal statistics</a>
+	<p></p>
+	<a href="leftoversearch.php">Find meals for existing ingreedients</a>
 </body>
 </html>
