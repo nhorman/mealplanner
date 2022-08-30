@@ -16,7 +16,7 @@
 		$row = $plandata->fetch();
 		echo "<h1><bold>Meal Plan</bold></h1>";
 		echo "<table align=center border=1 width=100%>";
-		echo "<tr><th>Day</th><th>Meal</th><th>Source</th><th>Location</th></tr>";
+		echo "<tr><th>Day</th><th>Meal</th><th>Source</th><th>Location</th><th width=40%>Notes</th></tr>";
 		foreach ($days as &$day) {
 			$meal = $row["{$day}"];
 			$mealdata = $connection->prepare("SELECT * from meals WHERE name='{$meal}'");
@@ -30,7 +30,7 @@
 				$location = $mealdata["location"];
 			}
 			echo "<tr>";
-			echo "<td>{$day}</td><td>{$meal}</td><td>{$source}</td><td>{$location}</td>";
+			echo "<td>{$day}</td><td>{$meal}</td><td>{$source}</td><td>{$location}</td><td><br><br><br><br><br><br></td>";
 			echo "</tr>";
 		}
 		echo "</table>";
