@@ -3,19 +3,23 @@
 <body>
 
 <h1>Meal Statistics</h1>  
-		<h1><bold> TOP 10 MEALS </bold></h1>
+		<h1><bold> Meal Rankings </bold></h1>
+		<form action="deletemeal.php" id="mealform" method="post" >
 		<?
 			include 'vars.php';
 			$connection = new PDO("mysql:host={$host};dbname={$database};charset=utf8", $user, $password);
-			$stmt = $connection->prepare("SELECT * from meals ORDER BY timesmade DESC LIMIT 10");
+			$stmt = $connection->prepare("SELECT * from meals ORDER BY timesmade DESC");
 			$stmt->execute();
 			echo "<ol>";
 			while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                                echo "<li>{$row["name"]} (made {$row["timesmade"]} times)</li>";
+                                echo "<li>{$row["name"]} (made {$row["timesmade"]} times)";
+				echo "<input type=checkbox name={$row["name"]} value=yes>";
+				echo "</li>";
                         }
 			echo "</ol>";
 		?>
-
+		<button type="submit">Delete Meals</button>
+		</form>
 		<h1><bold> Family Favorites </bold></h1>
 		<form action="updatefavs.php" id="mealform" method="post" >
                 <div>
