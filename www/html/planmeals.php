@@ -18,7 +18,9 @@
 				$stmt = $connection->prepare("SELECT name from meals");
 				$stmt->execute();
 				while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-					echo "<option value=\"{$row["name"]}\"> {$row["name"]} </option>";
+					if ($row["hide"] == false) {
+						echo "<option value=\"{$row["name"]}\"> {$row["name"]} </option>";
+					}
 				}
 				echo "</select><p></p>";
 			}

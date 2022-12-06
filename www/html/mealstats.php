@@ -4,7 +4,7 @@
 
 <h1>Meal Statistics</h1>  
 		<h1><bold> Meal Rankings </bold></h1>
-		<form action="deletemeal.php" id="mealform" method="post" >
+		<form action="deletemeal.php" id="mealhideform" method="post" >
 		<?
 			include 'vars.php';
 			$connection = new PDO("mysql:host={$host};dbname={$database};charset=utf8", $user, $password);
@@ -13,12 +13,16 @@
 			echo "<ol>";
 			while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
                                 echo "<li>{$row["name"]} (made {$row["timesmade"]} times)";
-				echo "<input type=checkbox name={$row["name"]} value=yes>";
+				if ($row["hide"]) {
+					echo "<input type=checkbox name='{$row["name"]}' value=yes checked>";
+				} else {
+					echo "<input type=checkbox name='{$row["name"]}' value=yes>";
+				}
 				echo "</li>";
                         }
 			echo "</ol>";
 		?>
-		<button type="submit">Delete Meals</button>
+		<button type="submit">Update Hide Meals</button>
 		</form>
 		<h1><bold> Family Favorites </bold></h1>
 		<form action="updatefavs.php" id="mealform" method="post" >

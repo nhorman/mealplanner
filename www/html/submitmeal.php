@@ -9,7 +9,7 @@
 	$source = $_POST["source"];
 	$location = $_POST["location"];
 	$connection = new PDO("mysql:host={$host};dbname={$database};charset=utf8", $user, $password);
-	$result = $connection->query("INSERT into meals (name, source, location, famfavorite, timesmade) VALUES ('{$name}', '{$source}', '{$location}', false, 0)");
+	$result = $connection->query("INSERT into meals (name, source, location, famfavorite, timesmade, hide) VALUES ('{$name}', '{$source}', '{$location}', false, 0, false)");
 	if ($result == FALSE) {
 		echo "<p>Unable to insert new meal\n</p>";
 	} else {

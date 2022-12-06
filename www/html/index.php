@@ -35,7 +35,7 @@
 		$meals_exists = tableExists($pdo, "meals");
 		if ($meals_exists == FALSE) {
 			echo "<p>Creating meals table\n</p>";
-			$result = $pdo->query("CREATE TABLE meals (name VARCHAR(100) NOT NULL, source VARCHAR(100) NOT NULL, famfavorite BOOLEAN NOT NULL, timesmade INT NOT NULL, FOREIGN KEY (source) REFERENCES sources(name), location VARCHAR(512), PRIMARY KEY (name))");
+			$result = $pdo->query("CREATE TABLE meals (name VARCHAR(100) NOT NULL, source VARCHAR(100) NOT NULL, famfavorite BOOLEAN NOT NULL, timesmade INT NOT NULL, FOREIGN KEY (source) REFERENCES sources(name), location VARCHAR(512), hide BOOLEAN NOT NULL, PRIMARY KEY (name))");
 			if ($result == FALSE) {
 				echo "<p>create table meals failed: {$result} </p>";
 				return FALSE;
